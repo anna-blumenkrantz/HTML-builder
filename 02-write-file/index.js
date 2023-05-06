@@ -8,13 +8,15 @@ const { stdin, stdout } = process;
 
 // create a writable stream and create a file
 const output = fs.createWriteStream(filePath);
+
+stdout.write('What\'s your update?\n');
+
 const exitHandler = () => {
   stdout.write('\nGoodbye!\n');
   process.exit();
 };
+
 // listen for 'data' events on stdin
- // check if user entered Ctrl+C' and end the process
-process.on('SIGINT', exitHandler);
 stdin.on('data', data => {
   // check if user entered 'exit' and end the process
   if (data.toString().trim() === 'exit') {
@@ -25,3 +27,6 @@ stdin.on('data', data => {
     stdout.write(`You entered: ${data}`);
   }
 });
+
+// check if user entered Ctrl+C' and end the process
+process.on('SIGINT', exitHandler);
