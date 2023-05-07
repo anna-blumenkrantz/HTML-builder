@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const filePath = path.join(__dirname, 'secret-folder');
 
-//fetch only file without dircetories
+//fetch only file without diretories
 fs.readdir(filePath, { withFileTypes: true }, (error, files) => {
   if (error) {
       console.log(error);
